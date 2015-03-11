@@ -2,7 +2,20 @@ package Core;
 
 public class Character {
 	
+	String name;
 	boolean ready;
+	Archtype type;
+	
+	public Character (String n, Archtype t) {
+		name = n;
+		ready = false;
+		type = t;
+	}
+	
+	public Character (Archtype t) {
+		name = "Jean Michel";
+		type = t;
+	}
 	
 	//TODO
 	public boolean isDead() {

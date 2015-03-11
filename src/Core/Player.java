@@ -6,6 +6,8 @@ public class Player {
 	String name;
 	ArrayList<Character> team;
 	
+	
+	//****************************** In game related methods ***********************************
 	/***
 	 * 
 	 * @return is [player] eliminated?
@@ -35,6 +37,12 @@ public class Player {
 		}
 	}
 
+	//****************************** Not in game related methods ***********************************
+	
+	public void addCharacter (String name, Archtype t) {
+		team.add(new Character(name, t));
+	}
+	
 	public String getName() {
 		return name;
 	}
