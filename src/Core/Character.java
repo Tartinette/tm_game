@@ -1,10 +1,30 @@
 package Core;
 
+import java.util.ArrayList;
+
+import Enums.Direction;
+import Status.Death;
+import Status.Status;
+
 public class Character {
 	
 	String name;
 	boolean ready;
 	Archtype type;
+	ArrayList<Status> status;
+	
+	//******** Fighting stats ******
+	int actionPoints = 0;
+	int maxActionPoints = 10;
+	int movementPoints = 6;
+	int currentHealth = 1;
+	int maxHealth = 1;
+	int resource = 0;
+	int maxResource = 0;
+	Direction direction;
+	int armor;
+	int[] resistance = new int[5];// resistances
+	
 	
 	public Character (String n, Archtype t) {
 		name = n;
@@ -17,18 +37,28 @@ public class Character {
 		type = t;
 	}
 	
-	//TODO
+	/**
+	 *  Check if the status list contains death
+	 * @return true if death is one of the status affecting this character
+	 */
 	public boolean isDead() {
-		return true;
+		if (!status.isEmpty()) {
+			return status.contains(new Death());
+		} else {return false;}
 	}
 	
 	public boolean isReady() {
 		return ready;
 	}
 	
-	//TODO
+	/**
+	 * Apply all the buffs's effects on the character
+	 */
 	public void applyEffect(){
-		
+		if (!status.isEmpty())
+			for (Status s : status) {
+				s.applyEffect(this);
+			}
 	}
 	
 	public void ready() {
