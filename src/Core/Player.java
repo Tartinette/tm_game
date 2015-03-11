@@ -18,6 +18,22 @@ public class Player {
 		}
 		return true;
 	}
+	
+	public boolean isFinished() {
+		for (Character c : team) {
+			if (!c.isReady()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public void readyTeam () {
+		for (Character c : team) {
+			c.ready();
+			c.applyEffect();
+		}
+	}
 
 	public String getName() {
 		return name;
