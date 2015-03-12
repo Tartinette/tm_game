@@ -1,10 +1,10 @@
-package Core;
+package core;
 
 import java.util.ArrayList;
 
-import Enums.Direction;
-import Status.Death;
-import Status.Status;
+import status.Death;
+import status.Status;
+import enums.Direction;
 
 public class Character {
 	

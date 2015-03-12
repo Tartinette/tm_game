@@ -1,8 +1,8 @@
-package Core;
+package core;
 
 import java.util.ArrayList;
 
-import Enums.GameMode;
+import enums.GameMode;
 
 public class Game {
 	

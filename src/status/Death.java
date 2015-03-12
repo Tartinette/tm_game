@@ -1,6 +1,6 @@
-package Status;
+package status;
 
-import Core.Character;
+import core.Character;
 
 public class Death extends Status{
 	
