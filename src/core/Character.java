@@ -17,7 +17,7 @@ public class Character {
 	int actionPoints = 0;
 	int maxActionPoints = 10;
 	int movementPoints = 6;
-	int currentHealth = 1;
+	int currentHealth = -1;
 	int maxHealth = 1;
 	int resource = 0;
 	int maxResource = 0;
