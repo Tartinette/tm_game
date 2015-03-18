@@ -11,5 +11,8 @@ public abstract class _Class {
 	Resource resource;
 	int maxHealth;
 	int maxResource;
+	int[] attributes = new int[5];
+	int freeAttributePoint;
+	
 	
 }

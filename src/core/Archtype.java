@@ -3,6 +3,7 @@ package core;
 import items.Inventory;
 import character.Race;
 import character._Class;
+import enums.Carac;
 
 public class Archtype {
 	
@@ -12,6 +13,8 @@ public class Archtype {
 	Race origin;
 	Inventory stuff;
 	int[] attributes = new int[5];
+	int totalFreeAttributePoint;
+	int level;
 	
 	public Archtype () {
 		
@@ -38,5 +41,37 @@ public class Archtype {
 		/* Physical resistance does not depend on main attributes*/
 		resistance[2] = 0;
 		return resistance;
+	}
+	
+	public void increase(Carac c) {
+		switch (c) {
+			case Logic : 
+				attributes[0]++;
+				break;
+				
+			case Power : 
+				attributes[1]++;
+				break;
+				
+			case Precision : 
+				attributes[2]++;
+				break;
+				
+			case Resilience :
+				attributes[3]++;
+				break;
+				
+			case Vigor :
+				attributes[4]++;
+				break;
+				
+				default : 
+					totalFreeAttributePoint ++;
+		}
+		totalFreeAttributePoint --;
+	}
+	
+	public void decrease(Carac c) {
+		
 	}
 }
