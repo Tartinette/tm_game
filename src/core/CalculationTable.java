@@ -12,14 +12,16 @@ public class CalculationTable {
 	public int getReduction (int score) {
 		int reduction = 0;
 		reduction = _getReduction(score, 0, 0);
-		return (reduction * 5);
+		return (1- (reduction / 20));
 	}
 	
 	/**
-	 * You don't want to use that.
-	 * @param n
-	 * @param acu
-	 * @param av
+	 * You don't want to use that. Please use getReduction(int) instead.
+	 * This function is used by getReduction() to find the % reduction given a score n. 
+	 * Oh one more thing this is recursive.
+	 * @param n. Is the score.
+	 * @param acu. Contains the number of times a value has been repeated so far.
+	 * @param av. Contain the actual value of the progression so far.
 	 * @return
 	 */
 	public int _getReduction(int n, int acu, int av) {

@@ -13,28 +13,30 @@ import enums.Direction;
 
 public class Character {
 	
-	String name;
+	String name; /** Character name*/
 	boolean ready;
 	Archtype type;
 	ArrayList<Status> status;
+	CalculationTable table = new CalculationTable();
 	
 	//******** Fighting stats ******
 	int actionPoints = 0;
 	int maxActionPoints = 10;
-	int movementPoints = 6;
-	int currentHealth = -1;
+	int movementPoints = 6; 
+	int currentHealth = -1; 
 	int maxHealth = 1;
-	int resource = 0;
+	int resource = 0; /** current amount of resource available to the character*/
 	int maxResource = 0;
 	Direction direction;
-	int armor;
-	int[] resistance = new int[5];// resistances
+	int armor; /* should be equivalent to physical resistance (ie resistance[2])*/
+	int[] resistance = new int[5]; /** This array contains the value of the different resistance : {Bacteriological, Chemical, Physical, Psi, Psychological} */
 	
 	
 	public Character (String n, Archtype t) {
 		name = n;
 		ready = false;
 		type = t;
+		resistance = t.generateBaseResistance();
 	}
 	
 	public Character (Archtype t) {
@@ -90,7 +92,8 @@ public class Character {
 	}
 	
 	/**
-	 * This method always uses the first weapon found with getWeapons
+	 * This method always uses the first weapon found with getWeapons. This method decrease the character action point with the hit cost and uses the
+	 * getReduction method from core.CalculationTable to apply armor and resistance. Reduce directly the health of the target.
 	 * @param target is the character targeted with the attack.
 	 * 
 	 */
@@ -107,7 +110,7 @@ public class Character {
 
 	
 	/**
-	 * This method should not be called, see attack instead.
+	 * This method should not be called, see attack instead. This method uses the getReduction(int) method from core.CalculationTable
 	 * @param damage is the amount of damage inflicted to this character.
 	 * @param nature is the nature of the damage inflicted
 	 */
@@ -115,11 +118,30 @@ public class Character {
 		int actualDamage = 0;
 		switch (nature) {
 			case Bacteriological :
-				//TODO reduction table 
+				actualDamage = damage*table.getReduction(this.resistance[0]);
 				break;
+				
+			case Chemical :
+				actualDamage = damage*table.getReduction(this.resistance[1]);
+				break;
+				
+			case Physical : 
+				actualDamage = damage*table.getReduction(this.resistance[2]);
+				break;
+				
+			case Psi :
+				actualDamage = damage*table.getReduction(this.resistance[3]);
+				break;
+				
+			case Psychological : 
+				actualDamage = damage*table.getReduction(this.resistance[4]);
+				break;
+				
 			case Chaos :
+				/* This damage are not reductible with any resistance but still can be prevented by other effects like temporary health*/
 				actualDamage = damage;
-			
+				break;
+				
 			default :
 				actualDamage = damage;
 		}

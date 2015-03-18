@@ -1,10 +1,10 @@
 package enums;
 
 public enum DamageNature {
-	Physical,
-	Psychological,
-	Psi,
-	Chemical,
 	Bacteriological,
+	Chemical,
+	Physical,
+	Psi,
+	Psychological,
 	Chaos;
 }
