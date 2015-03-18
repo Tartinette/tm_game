@@ -43,6 +43,7 @@ public class Archtype {
 		return resistance;
 	}
 	
+	//TODO prevent user from reducing stat below the base or above the max allowed by free points
 	public void increase(Carac c) {
 		switch (c) {
 			case Logic : 
@@ -72,6 +73,30 @@ public class Archtype {
 	}
 	
 	public void decrease(Carac c) {
-		
+		switch (c) {
+		case Logic : 
+			attributes[0]--;
+			break;
+			
+		case Power : 
+			attributes[1]--;
+			break;
+			
+		case Precision : 
+			attributes[2]--;
+			break;
+			
+		case Resilience :
+			attributes[3]--;
+			break;
+			
+		case Vigor :
+			attributes[4]--;
+			break;
+			
+			default : 
+				totalFreeAttributePoint --;
+	}
+	totalFreeAttributePoint ++;
 	}
 }
