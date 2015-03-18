@@ -30,7 +30,7 @@ public class Character {
 	Direction direction;
 	int armor; /* should be equivalent to physical resistance (ie resistance[2])*/
 	int[] resistance = new int[5]; /** This array contains the value of the different resistance : {Bacteriological, Chemical, Physical, Psi, Psychological} */
-	
+	int[] attributes = new int[5];/** This array contains the value of the different attributes of the character*/
 	
 	public Character (String n, Archtype t) {
 		name = n;

@@ -1,10 +1,10 @@
 package enums;
 
 public enum Carac {
-	Vigor,
+	Logic,
 	Power,
 	Precision,
-	Logic,
 	Resilience,
+	Vigor,
 	None;
 }
