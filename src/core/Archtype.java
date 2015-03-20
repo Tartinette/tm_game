@@ -20,10 +20,24 @@ public class Archtype {
 		
 	}
 	
+	/** 
+	 * Find the first weapon and then returns the hit strike associated. If you want to hit with another one please use getAttackCost(int)
+	 * @return the attack cost of the first weapon in your inventory
+	 */
 	public int getAttackCost() {
+		
+		return 3;
+	}		
+	
+	/**
+	 * 
+	 * @param index. Index of the weapon you want to use to strike.
+	 * @return return the ap cost to hit with a weapon
+	 */
+	public int getAttackCost(int index) {
 		// TODO Auto-generated method stub
 		return 0;
-	}		
+	}
 	
 	public Inventory getInventory () {
 		return stuff;
